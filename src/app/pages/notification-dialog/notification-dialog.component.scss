@@ -1,0 +1,72 @@
+// @import "src/@fuse/scss/fuse";
+.confirmation-dialog {
+  // @include media-breakpoint("xs") {
+  //   width: 100%;
+  // }
+
+  // @include media-breakpoint-up("sm") {
+  //   width: 440px;
+  // }
+  .dialog-custom{
+    overflow: hidden !important;
+    width: 418px;
+    height: 30vh;
+  }
+  
+ 
+  .mat-radio-button {
+    margin: 0 5px;
+  }
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 0px;
+  }
+  .close {
+    width: 6% !important;
+    // color: #035f88 !important;
+    // position: relative;
+    // bottom: 5px;
+  }
+  .dialog-content-wrapper {
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .toolBg {
+    overflow: hidden;
+   
+      background-color: #035f88;
+      padding: 10px 10px 10px 30px;
+      height: 40px;
+      color: white;
+    }
+    // padding: 10px 10px 0px 26px;height: 6vh;
+ 
+  .content{
+    padding: 20px 20px 0px 30px;
+  }
+  .btnBg{
+    // background-color: #efb577 !important;
+    // color: white !important;
+    background-color: #035f88 !important;
+    color: white !important;
+    border-radius: 7px;
+            width: 20%;
+            height: 5vh;
+            font-size: 13px;
+  }
+  .cancel-btn{
+    background-color: white;
+            border-color: #035f88;
+            border-radius: 7px;
+            width: 20%;
+            height: 5vh;
+            font-size: 13px;
+            color: #035f88;
+            
+  }
+  .remarks{
+    width: 70%;
+    margin-left: 29px;
+  }
+}

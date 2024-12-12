@@ -1,0 +1,146 @@
+
+#initiator {
+    width: 100%;
+    // height: 80vh;
+    padding: 30px 0px 0px 0px;
+    background-color: whitesmoke;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    nb-layout .layout .layout-container .content .columns nb-layout-column {
+       padding: 0px !important;
+    }
+    .register-img {
+        width: 60%;
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+    
+    .register-title {
+        color: #394657;
+        font-weight: 700;
+        font-size: 16px;
+    }
+    .inputfield{
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .title{
+        color: #708295;
+    }
+    .title-second{
+        color: #708295;
+        margin-top: 24px;
+    }
+    .card-reg{
+        max-height: calc(73vh - 80px);
+    }
+    .progressBarPostion {
+        position: absolute !important;
+        bottom: 50%;
+        z-index: 1;
+        left: 55%;
+      }
+      .error {
+        color: red;
+        font-size: 10px;
+    }
+    .footercard {
+        // position: absolute;
+        height: 80px;
+        
+        background-color: #e8ebfa;
+        bottom: 0px;
+        // left: 0px;
+        // right: 0px;
+        margin-bottom: 0px;
+        z-index: 100;
+        width: 100%;
+        right: 0px;
+    }
+
+    .footerbutton {
+        margin-top: 12px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 11px;
+    }
+    // .SaveBtn {
+
+    //     background-color: #035f88;
+    //     border-color: #035f88;
+    //     border-radius: 7px;
+    //     width: 10%;
+    //     height: 5vh;
+    //     font-size: 13px;
+    //     color: white;
+    //     position: relative;
+    //     border: 1px solid;
+
+    // }
+    // #footerCard {
+    //     position: fixed;
+    //     height: 50px;
+    //     box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.16);
+    //     background-color: #ffffff;
+    //     bottom: 0px;
+    //     left: 0px;
+    //     right: 0px;
+    //     margin-bottom: 0px;
+    //     z-index: 100;
+
+    //     .SaveBtn {
+    //         background-color: #035f88;
+    //         border-color: #035f88;
+    //         border-radius: 7px;
+    //         width: 100%;
+    //         height: 5.5vh;
+    //         font-size: 13px;
+    //         color: white;
+    //         background-color: #035f88;
+    //         border-color: #035f88;
+    //         border-radius: 7px;
+    //         width: 130%;
+    //         height: 5vh;
+    //         font-size: 13px;
+    //         color: white;
+    //         position: relative;
+    //         top: 10px;
+    //     }
+    // }
+    .footerCard {
+        // position: fixed;
+        height: 80px;
+        // box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.16);
+        background-color: #e8ebfa;
+        bottom: 0px;
+        // left: 0px;
+        // right: 0px;
+        margin-bottom: 0px;
+        z-index: 100;
+        width: 81%;
+        margin-left: -9px;
+        right: -2px;
+    }
+
+    .footerbutton {
+        margin-top: 12px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 11px;
+    }
+    .SaveBtn {
+
+        background-color: #035f88;
+        border-color: #035f88;
+        border-radius: 7px;
+        // width: 10%;
+        height: 5vh;
+        font-size: 13px;
+        color: white;
+        position: relative;
+        border: 1px solid;
+        width: fit-content;
+    }
+}

@@ -1,0 +1,308 @@
+<div id="Identity">
+    <div class="row">
+        <div class="col-12">
+            <!-- <div class="col-sm-10 title">
+                OnBoardFiled Configuration
+            </div> -->
+        </div>
+        <div class="col-3">
+            <div class="row">
+                <div class="col-8">
+                    <input [(ngModel)]="searchText" type="text" placeholder="Search" nbInput fullWidth status="basic">
+                </div>
+                <div class="col-4">
+                    <button class="AddBtn" (click)="ResetControl()" *ngIf="buttonhidden">
+                        <img class="logo" src="/assets/images/plus.svg">
+                        Add</button>
+                </div>
+
+
+
+            </div>
+            <div class="row side-bar">
+                <div class="sidenav-content">
+                    <div *ngFor="let identity of search() ">
+                        <div>
+                            <nb-card style="margin-bottom: 0px;margin-top:10px;">
+                                <nb-card-body style="padding: 0px;overflow: hidden;">
+                                    <div class="mx-8 mb-8 mt-0 leftCard" (click)="LoadSelectedIdentity(identity)"
+                                        [style.border-left-color]="SelectedIdentityID==identity.ID?'#035f88':'#cccccc'">
+                                        <div class="row  d-flex justify-content-between"
+                                            style="padding: 10px 50px 10px 10px;">
+                                            <div class="col-3 strong_label"><strong>{{identity.id}}</strong></div>
+                                            <div class="col-3 labels" align="end">{{identity.createdOn | date
+                                                :'dd/MM/yyyy'}}
+                                            </div>
+                                        </div>
+                                        <div style="padding: 0px 0px 10px 10px;">
+                                            <div class="labels"><strong>Identity Name : </strong>{{identity.text}}</div>
+                                        </div>
+
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <!-- <div *ngIf="(AllOnBoardingFieldMasters  | filter: searchText)?.length === 0"
+                        class="no-results-message">
+                        <span class="pl-12"> No results..</span>
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+        <div class="col">
+            <form [formGroup]="IdentityFormGroup">
+                <nb-card>
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Identity Name
+                                    </div>
+                                    <input type="text" nbInput placeholder="Field" fullWidth status="basic"
+                                        formControlName="Text" class="fieldwidth2 mb-3">
+                                    <span class="error"
+                                        *ngIf="IdentityFormGroup.get('Text').touched &&  IdentityFormGroup.get('Text').hasError('required')">
+                                        Name is required</span>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Format
+                                    </div>
+                                    <nb-select placeholder=" Document Format" shape="semi-round" style="padding: 0px;"
+                                        formControlName="Format">
+                                        <nb-option *ngFor="let rol of Format" [value]="rol">{{rol}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span class="error"
+                                        *ngIf="IdentityFormGroup.get('Format').touched && IdentityFormGroup.get('Format').hasError('required')">
+                                        Text is required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Country
+                                    </div>
+                                    <nb-select placeholder="Country" shape="semi-round" style="padding: 0px;"
+                                        formControlName="Country">
+                                        <nb-option *ngFor="let country of AllCountries"
+                                            [value]="country.name">{{country.name}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span class="error"
+                                        *ngIf="IdentityFormGroup.get('Country').touched && IdentityFormGroup.get('Country').hasError('required')">
+                                        Default Value is required
+                                    </span>
+                                </div>
+                            </div> -->
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Document Required
+                                    </div>
+                                    <nb-select placeholder="Document Required status" shape="semi-round" style="padding: 0px;"
+                                        formControlName="DocReq">
+                                        <nb-option *ngFor="let type of AllDOC" [value]="type.Value">{{type.Key}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span class="error"
+                                        *ngIf="IdentityFormGroup.get('DocReq').touched && IdentityFormGroup.get('DocReq').hasError('required')">
+                                        Mandatory is required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 ">
+                                <!-- <div class="row" style="margin-left: 0px; width: 100%; ">
+                                    <div class="mb-3 ">
+                                        Exp Date
+                                    </div>
+                                   
+                                   
+                                    <input nbInput placeholder="Exp Date" [nbDatepicker]="dateTimePicker"
+                                        formControlName="ExpDateReq">
+                                    <nb-datepicker #dateTimePicker></nb-datepicker>
+                                    <span class="error"
+                                        *ngIf="IdentityFormGroup.get('ExpDateReq').touched && IdentityFormGroup.get('ExpDateReq').hasError('required')">
+                                        Expiry is required</span>
+
+                                </div> -->
+                            </div>
+
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+            </form>
+            <!-- <div class="d-flex justify-content-end">
+                <button class="floatBtn" mat-flat-button style="background-color:#e6e9f7" (click)="ResetControl()" *ngIf="buttonhidden">
+                    <mat-icon style="color: rgb(14, 13, 13);">add</mat-icon>
+                  </button>
+            </div> -->
+        </div>
+
+        <!-- <div class="col"> -->
+        <div class="footerCard">
+
+            <nb-card class="footerbutton">
+                <nb-card-body style="padding: 10px 10px 10px 10px;">
+                    <div class="d-flex justify-content-end">
+                        <!-- <button mat-button class="DeleteBtn mr-4 mb-8">Delete</button> -->
+                        <!-- <button *ngIf="SelectedIdentity?.ID" mat-stroked-button class="DeleteBtn mr-4 mb-8"
+                        (click)="DeleteClicked()">Delete</button> -->
+                        <button *ngIf="SelectedIdentity?.ID" class="DeleteBtn" (click)="DeleteClicked()">Delete</button>
+                        <button *ngIf="!SelectedIdentity?.ID" class="SaveBtn" (click)="SaveClicked()">Save</button>
+                        <button *ngIf="SelectedIdentity?.ID" class="SaveBtn" (click)="UpdateClicked()">Update</button>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+       
+    </div>
+    <mat-progress-spinner *ngIf="IsProgressBarVisibile" class="progressBarPostion" color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+    <div id="overlay" *ngIf="IsProgressBarVisibile"></div>
+</div>
+
+
+
+<!-- <div class="row">
+    <div class="col-12">
+    </div>
+    <div class="col-3">
+        <input [(ngModel)]="searchText" type="text" placeholder="Enter GST" nbInput fullWidth status="basic">
+        <div class="row side-bar">
+            <div class="sidenav-content">
+                <div *ngFor="let OnBoardingFieldMaster  of AllOnBoardingFieldMasters ">
+                    <div>
+                        <nb-card style="margin-bottom: 0px;margin-top:10px;">
+                            <nb-card-body style="padding: 0px;overflow: hidden;">
+                                <div class="mx-8 mb-8 mt-0 leftCard"
+                                    (click)="loadSelectedOnBoardingFieldMaster(OnBoardingFieldMaster )"
+                                    [style.border-left-color]="selectID ==OnBoardingFieldMaster.ID?'#035f88':'#cccccc'">
+                                    <div class="row  d-flex justify-content-between"
+                                        style="padding: 10px 50px 10px 10px;">
+                                        <div class="col-3"><strong>{{OnBoardingFieldMaster.Field}}</strong></div>
+                                        <div class="col-3" align="end">{{OnBoardingFieldMaster.CreatedOn | date
+                                            :'dd/MM/yyyy'}}
+                                        </div>
+                                    </div>
+                                    <div style="padding: 0px 0px 10px 10px;">
+                                        <div><strong></strong>{{OnBoardingFieldMaster.Text}}</div>
+                                    </div>
+
+                                </div>
+                            </nb-card-body>
+                        </nb-card>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col">
+        <form [formGroup]="IdentityFormGroup">
+            <nb-card>
+                <nb-card-body>
+                    <div class="row">
+                        <div class="col-6 ">
+                            <div class="row" style="margin-left: 0px;">
+                                <div class="mb-3 ">
+                                    Field
+                                </div>
+                                <input type="text" nbInput placeholder="Field" formControlName="Field" fullWidth
+                                    status="basic" class="fieldwidth2 mb-3">
+                                <span
+                                    *ngIf="IdentityFormGroup.get('Field').touched &&  IdentityFormGroup.get('Field').hasError('required')">
+                                    Field is required</span>
+                            </div>
+                        </div>
+                        <div class="col-6 ">
+                            <div class="row" style="margin-left: 0px;">
+                                <div class="mb-3 ">
+                                    Text
+                                </div>
+                                <input type="text" nbInput placeholder="Text" formControlName="Text" fullWidth
+                                    status="basic" class="fieldwidth2 mb-3">
+                                <span
+                                    *ngIf="IdentityFormGroup.get('Text').touched && IdentityFormGroup.get('Text').hasError('required')">
+                                    Text is required
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 ">
+                            <div class="row" style="margin-left: 0px;">
+                                <div class="mb-3 ">
+                                    Default value
+                                </div>
+                                <input type="text" nbInput placeholder=" Default value"
+                                    formControlName="DefaultValue" class=" mb-3 fieldwidth2"> 
+                                <span
+                                    *ngIf="IdentityFormGroup.get('DefaultValue').touched && IdentityFormGroup.get('DefaultValue').hasError('required')">
+                                    Default Value is required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6 ">
+                            <div class="row" style="margin-left: 0px;">
+                                <div class="mb-3 ">
+                                    Mandatory
+                                </div>
+                                <nb-select placeholder="Mandatory" formControlName="Mandatory" shape="semi-round"
+                                    style="padding: 0px;">
+
+                                    <nb-option *ngFor="let man of MandatoryList" [value]="man.Value">{{man.Key}}
+                                    </nb-option>
+                                </nb-select>
+                                <span
+                                    *ngIf="IdentityFormGroup.get('Mandatory').touched && IdentityFormGroup.get('Mandatory').hasError('required')">
+                                    Mandatory is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 ">
+                            <div class="row" style="margin-left: 0px; width: 100%; ">
+                                <div class="mb-3 ">
+                                    Invisisble
+                                </div>
+                                <nb-select placeholder="Invisisble" shape="semi-round" formControlName="Invisible"
+                                    style="padding: 0px;">
+
+                                    <nb-option *ngFor="let man of MandatoryList" [value]="man.Value">{{man.Key}}
+                                    </nb-option>
+                                </nb-select>
+                                <span
+                                    *ngIf="IdentityFormGroup.get('Invisible').touched && IdentityFormGroup.get('Invisible').hasError('required')">
+                                    Invisible is required</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </form>
+
+    </div>
+  
+    <div class="footerCard">
+
+        <nb-card>
+            <nb-card-body>
+                <div class="d-flex justify-content-end">
+                    <button (click)="SaveClicked()" class="SaveBtn" mat-raised-button>
+                        {{selectedOnBoardingFieldMaster.ID?'Update':'Create'}}</button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div> -->

@@ -1,0 +1,149 @@
+<div id="OBDField">
+    <div class="row">
+        <div class="col-12">
+            <!-- <div class="col-sm-10 title">
+                OnBoardFiled Configuration
+            </div> -->
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="searchText" type="text" placeholder="Search" nbInput fullWidth status="basic">
+            <div class="row side-bar">
+                <div class="sidenav-content">
+                    <div *ngFor="let OnBoardingFieldMaster  of AllOnBoardingFieldMasters ">
+                        <div>
+                            <nb-card style="margin-bottom: 0px;margin-top:10px;">
+                                <nb-card-body style="padding: 0px;overflow: hidden;">
+                                    <div class="mx-8 mb-8 mt-0 leftCard"
+                                        (click)="loadSelectedOnBoardingFieldMaster(OnBoardingFieldMaster )"
+                                        [style.border-left-color]="selectID ==OnBoardingFieldMaster.ID?'#035f88':'#cccccc'">
+                                        <div class="row  d-flex justify-content-between"
+                                            style="padding: 10px 50px 10px 10px;">
+                                            <div class="col-3 strong_label"><strong>{{OnBoardingFieldMaster.field}}</strong></div>
+                                            <div class="col-3 labels" align="end">{{OnBoardingFieldMaster.createdOn | date
+                                                :'dd/MM/yyyy'}}
+                                            </div>
+                                        </div>
+                                        <div style="padding: 0px 0px 10px 10px;">
+                                            <div class="labels">{{OnBoardingFieldMaster.text}}</div>
+                                        </div>
+
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <!-- <div *ngIf="(AllOnBoardingFieldMasters  | filter: searchText)?.length === 0"
+                        class="no-results-message">
+                        <span class="pl-12"> No results..</span>
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+        <div class="col">
+            <form [formGroup]="OnBoardingFieldMasterFormGroup">
+                <nb-card>
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Field
+                                    </div>
+                                    <input type="text" nbInput placeholder="Field" formControlName="Field" fullWidth
+                                        status="basic" class="fieldwidth2 mb-3">
+                                    <span
+                                        *ngIf="OnBoardingFieldMasterFormGroup.get('Field').touched &&  OnBoardingFieldMasterFormGroup.get('Field').hasError('required')">
+                                        Field is required</span>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Text
+                                    </div>
+                                    <input type="text" nbInput placeholder="Text" formControlName="Text" fullWidth
+                                        status="basic" class="fieldwidth2 mb-3">
+                                    <span
+                                        *ngIf="OnBoardingFieldMasterFormGroup.get('Text').touched && OnBoardingFieldMasterFormGroup.get('Text').hasError('required')">
+                                        Text is required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Default value
+                                    </div>
+                                    <input type="text" nbInput placeholder=" Default value"
+                                        formControlName="DefaultValue" class=" mb-3 fieldwidth2"> 
+                                    <span
+                                        *ngIf="OnBoardingFieldMasterFormGroup.get('DefaultValue').touched && OnBoardingFieldMasterFormGroup.get('DefaultValue').hasError('required')">
+                                        Default Value is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Mandatory
+                                    </div>
+                                    <!-- <input type="text" nbInput placeholder="Mandatory" fullWidth status="basic"
+                                    class=" mb-3"> -->
+                                    <nb-select placeholder="Mandatory" formControlName="Mandatory" shape="semi-round"
+                                        style="padding: 0px;">
+
+                                        <nb-option *ngFor="let man of MandatoryList" [value]="man.Value">{{man.Key}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span
+                                        *ngIf="OnBoardingFieldMasterFormGroup.get('Mandatory').touched && OnBoardingFieldMasterFormGroup.get('Mandatory').hasError('required')">
+                                        Mandatory is required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px; width: 100%; ">
+                                    <div class="mb-3 ">
+                                        Invisisble
+                                    </div>
+                                    <nb-select placeholder="Invisisble" shape="semi-round" formControlName="Invisible"
+                                        style="padding: 0px;">
+
+                                        <nb-option *ngFor="let man of MandatoryList" [value]="man.Value">{{man.Key}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span
+                                        *ngIf="OnBoardingFieldMasterFormGroup.get('Invisible').touched && OnBoardingFieldMasterFormGroup.get('Invisible').hasError('required')">
+                                        Invisible is required</span>
+
+                                    <!-- <input type="text" nbInput placeholder="Name" fullWidth status="basic" class=" mb-3"> -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+            </form>
+
+        </div>
+        <!-- <div class="col"> -->
+        <div class="footerCard">
+
+            <nb-card class="footerbutton">
+                <nb-card-body style="padding: 10px 10px 10px 10px;">
+                    <div class="d-flex justify-content-end">
+                        <button (click)="SaveClicked()" class="SaveBtn" mat-raised-button>
+                            {{selectedOnBoardingFieldMaster.ID?'Update':'Create'}}</button>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+    <mat-progress-spinner *ngIf="isProgressBarVisibile" class="progressBarPostion" color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+    <div id="overlay" *ngIf="isProgressBarVisibile"></div>
+</div>

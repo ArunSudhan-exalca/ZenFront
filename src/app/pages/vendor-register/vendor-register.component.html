@@ -1,0 +1,1179 @@
+<div id="vendorregister">
+    <div class="row">
+        <!-- <div class="col-2 " style="padding: 0px;">
+            <div class="menu">
+
+            </div>
+        </div> -->
+        <div class="col">
+            <div class="row">
+                <div class="d-flex justify-content-start header">
+                    <div class="col-sm-10 title">
+                        Supplier Registration
+                    </div>
+                    <!-- <div class="col-sm-2">
+                        <img class="message" src="/assets/images/message.svg">
+                        <img class="notification" src="/assets/images/notification.svg">
+                        <img class="userimage" src="/assets/images/userimage.svg">
+                    </div> -->
+                </div>
+
+            </div>
+            <div class="row document_details">
+                <nb-card class="nbcard-1">
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="basic-title">
+                                        Initiator Input
+                                    </div>
+                                    <div>
+                                        <img class="initialimg" src="/assets/images/initiator-reg.svg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <form [formGroup]="InitiatorFormGroup">
+                                    <div class="row">
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Account Group
+                                            </div>
+                                            <input type="text" placeholder="Account Group" [readonly]=true
+                                                formControlName="AccountGroup" nbInput fullWidth status="basic"
+                                                class="inputfield mb-3">
+
+                                        </div>
+                                        <!-- <div class="col-4 fieldwidth2">
+                                                <div class="mb-3 labels">
+                                                    Account Number
+                                                </div>
+                                                <input type="text"  formControlName="AccountNo"
+                                                    nbInput fullWidth status="basic" class="inputfield mb-3">
+
+                                            </div> -->
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Purchase Organisation
+                                            </div>
+                                            <input type="text" placeholder=" Purchase Organisation"
+                                                formControlName="PurchaseOrg" nbInput [readonly]=true fullWidth
+                                                status="basic" class="inputfield mb-3">
+
+                                        </div>
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Company Code
+                                            </div>
+                                            <input type="text" placeholder="Company Code" formControlName="CompanyCode"
+                                                [readonly]=true nbInput fullWidth status="basic"
+                                                class="inputfield mb-3">
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                GST Vendor Classification
+                                            </div>
+                                            <input type="text" placeholder="GST Vendor Classification"
+                                                formControlName="Gst" nbInput [readonly]=true fullWidth status="basic"
+                                                class="inputfield mb-3">
+
+                                        </div>
+                                        <div class="col-4">
+
+                                            <div class="mb-3 labels">
+                                                Name
+                                            </div>
+                                            <input type="text" placeholder="Vendor Name" formControlName="Name" nbInput
+                                                [readonly]=true fullWidth status="basic" class="inputfield mb-3">
+
+                                        </div>
+                                        <div class="col-4">
+
+                                            <div class="mb-3 labels">
+                                                Mail
+                                            </div>
+                                            <input type="text" placeholder="Vendor Mail" formControlName="Mail" nbInput
+                                                [readonly]=true fullWidth status="basic" class="inputfield mb-3">
+
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                </form>
+                            </div>
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+
+                <form [formGroup]="vendorRegistrationFormGroup">
+                    <nb-card class="nbcard">
+                        <nb-card-body>
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="basic-title">
+                                            Basic Details
+                                        </div>
+                                        <div>
+                                            <img class="basic-img" src="/assets/images/BasicDeatils.svg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+
+                                    <div class="row">
+                                        <div class="col-6 " *ngIf="GSTAttachment">
+                                            <div class="row fieldwidth1" style="margin-left: 0px;">
+                                                <div class="mb-3 labels">
+                                                    GST *
+                                                </div>
+                                                <input type="text" nbInput placeholder="GST" fullWidth status="basic"
+                                                    oninput="this.value = this.value.trimStart().toUpperCase()"
+                                                    formControlName="gstNumber" class="inputfield mb-3">
+                                                <span class="error"
+                                                    *ngIf="vendorRegistrationFormGroup.get('gstNumber')?.hasError('required') && vendorRegistrationFormGroup.get('gstNumber')?.touched">
+                                                    Please Enter GST
+                                                </span>
+                                                <span class="error"
+                                                    *ngIf="vendorRegistrationFormGroup.get('gstNumber').hasError('pattern')  && vendorRegistrationFormGroup.get('gstNumber')?.touched">
+                                                    Please Enter Valid GST
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 ">
+                                            <div class="row fieldwidth1">
+                                                <div class="mb-3 labels">
+                                                    PAN *
+                                                </div>
+                                                <input type="text" nbInput fullWidth placeholder="PAN" status="basic"
+                                                    oninput="this.value = this.value.trimStart().toUpperCase()"
+                                                    (input)="panValidate()" formControlName="PAN"
+                                                    class="inputfield mb-3">
+                                                <span class="error"
+                                                    *ngIf="vendorRegistrationFormGroup.get('PAN')?.hasError('required') && vendorRegistrationFormGroup.get('PAN')?.touched">
+                                                    Please Enter PAN Number
+                                                </span>
+                                                <span class="error"
+                                                    *ngIf="vendorRegistrationFormGroup.get('PAN').hasError('pattern')  && vendorRegistrationFormGroup.get('PAN')?.touched">
+                                                    Please Enter valid PAN Number
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 ">
+                                            <div class="row fieldwidth1" style="margin-left: 0px;">
+                                                <div class="mb-3 labels">
+                                                    Name *
+                                                </div>
+                                                <input type="text" nbInput placeholder="Name" fullWidth status="basic"
+                                                    formControlName="Name" class="inputfield mb-3">
+                                                <span class="error"
+                                                    *ngIf="(vendorRegistrationFormGroup.get('Name')?.hasError('required') && vendorRegistrationFormGroup.get('Name')?.touched)">
+                                                    Please Enter Name
+                                                </span>
+                                                <span class="error"
+                                                    *ngIf="(vendorRegistrationFormGroup.get('Name')?.hasError('maxlength') && vendorRegistrationFormGroup.get('Name')?.touched)">
+                                                    Maximum length 35
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </nb-card-body>
+                    </nb-card>
+                    <nb-card class="nbcard">
+                        <nb-card-body>
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="basic-title">
+                                            Contact Information
+                                        </div>
+                                        <div>
+                                            <img class="contact-img" src="/assets/images/ContactDetails.svg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-6 ">
+                                            <div class="mb-3 labels">
+                                                Telephone 1 *
+                                            </div>
+                                            <input type="text" placeholder="Contact Number 1"
+                                                formControlName="primaryContact" nbInput fullWidth status="basic"
+                                                class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('primaryContact')?.hasError('required') && vendorRegistrationFormGroup.get('primaryContact')?.touched">
+                                                Please Enter Primary Contact
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('primaryContact').hasError('pattern') && vendorRegistrationFormGroup.get('primaryContact')?.touched">
+                                                Please Enter valid Contact number
+                                            </span>
+
+                                        </div>
+
+                                        <div class="col-6 ">
+                                            <div class="mb-3 labels">
+                                                Mail 1 *
+                                            </div>
+                                            <input type="text" placeholder="EmailId 1" formControlName="primarymail"
+                                                nbInput fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('primarymail').hasError('pattern') && vendorRegistrationFormGroup.get('primarymail')?.touched">
+                                                Please Enter valid Mail ID
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('primarymail')?.hasError('required') && vendorRegistrationFormGroup.get('primarymail')?.touched">
+                                                Please Enter Mail ID
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('primarymail')?.hasError('maxlength') && vendorRegistrationFormGroup.get('primarymail')?.touched">
+                                                Maximum length 60
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 ">
+                                            <div class="mb-3 labels">
+                                                Telephone 2
+                                            </div>
+                                            <input type="text" placeholder="Contact Number 2"
+                                                formControlName="secondaryContact" nbInput fullWidth status="basic"
+                                                class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('secondaryContact').hasError('pattern') && vendorRegistrationFormGroup.get('secondaryContact')?.touched">
+                                                Please Enter valid Contact number
+                                            </span>
+                                        </div>
+                                        <div class="col-6 ">
+                                            <div class="mb-3 labels">
+                                                Mail 2
+                                            </div>
+                                            <input type="text" placeholder=" EmailId 2" formControlName="secondarymail"
+                                                nbInput fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('secondarymail').hasError('pattern') && vendorRegistrationFormGroup.get('secondarymail')?.touched">
+                                                Please Enter valid Mail ID
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('secondarymail')?.hasError('maxlength') && vendorRegistrationFormGroup.get('secondarymail')?.touched">
+                                                Maximum length 60
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </nb-card-body>
+                    </nb-card>
+                    <nb-card class="nbcard">
+                        <nb-card-body>
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="basic-title">
+                                            Address Information
+                                        </div>
+                                        <div>
+                                            <img class="address-img" src="/assets/images/address.svg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col ">
+                                    <div class="row">
+                                        <div class="col-3 fieldwidth4">
+                                            <div class="mb-3 labels">
+                                                Country *
+                                            </div>
+
+
+                                            <!-- <mat-select placeholder="select region" formControlName="StateCode">
+                                                <mat-option>
+                                                    <lib-mat-select-search [list]="regionDatas"
+                                                        [searchProperties]="['StateCode', 'State']"
+                                                        (filtered)="regionData = $event">
+                                                    </lib-mat-select-search>
+                                                </mat-option>
+
+                                                <mat-option *ngFor="let region of regionData"
+                                                    [value]="region.StateCode">
+                                                    {{ region.StateCode }} - {{region.State}}
+                                                </mat-option>
+                                            </mat-select> -->
+
+
+                                            <mat-select placeholder="select country" formControlName="country" (selectionChange)="CountryOptions($event.value)" >
+                                                <mat-option>
+                                                    <lib-mat-select-search [list]="CountryDetails"
+                                                        [searchProperties]="['CountryCode', 'Country']"
+                                                        (filtered)="CountryDetail = $event">
+                                                    </lib-mat-select-search>
+                                                </mat-option>
+
+                                                <mat-option *ngFor="let country of CountryDetail"
+                                                    [value]="country.CountryCode">
+                                                    {{ country.CountryCode }} - {{country.Country}}
+                                                </mat-option>
+                                            </mat-select>
+
+
+
+
+                                            <!-- <input #autoInput style="width: 100%;" nbInput type="text"
+                                                (input)="onChangeCountry()" formControlName="country"
+                                                placeholder="Enter value" [nbAutocomplete]="auto" />
+
+                                            <nb-autocomplete #auto (selectedChange)="CountryOptions($event)">
+
+                                                <nb-option *ngFor="let country of filteredOptionscountry | async"
+                                                    [value]="country">
+                                                    {{ country }}
+                                                </nb-option>
+
+                                            </nb-autocomplete> -->
+
+                                            <!--
+                                            <nb-select placeholder="Country" shape="semi-round" [(selected)]="selectedCountry"
+                                                style="padding: 0px;width: 100%;" formControlName="country"
+                                                (selectedChange)="CountryOptions()">
+                                                <nb-option *ngFor="let country of CountryData"
+                                                    [value]="country">{{country}}
+                                                </nb-option>
+                                            </nb-select> -->
+                                            <!-- <input type="text" placeholder="Country" formControlName="country" nbInput
+                                                fullWidth status="basic" class="inputfield mb-3"> -->
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('Country')?.hasError('required') && vendorRegistrationFormGroup.get('Country')?.touched">
+                                                Please Enter Country
+                                            </span>
+                                        </div>
+                                        <div class="col-3 fieldwidth4">
+                                            <div class="mb-3 labels">
+                                                Pincode *
+                                            </div>
+                                            <input type="text" placeholder="Pincode" formControlName="pinCode" nbInput
+                                                fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('pinCode')?.hasError('required') && vendorRegistrationFormGroup.get('pinCode')?.touched">
+                                                Please Enter Pincode
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="(vendorRegistrationFormGroup.get('pinCode')?.hasError('pattern') || vendorRegistrationFormGroup.get('pinCode')?.hasError('minlength') || vendorRegistrationFormGroup.get('pinCode')?.hasError('maxlength'))  && vendorRegistrationFormGroup.get('pinCode')?.touched">
+                                                Please Enter valid Pincode
+                                            </span>
+
+                                        </div>
+                                        <div class="col-3 fieldwidth4">
+                                            <div class="mb-3 labels">
+                                                City *
+                                            </div>
+                                            <input type="text" placeholder="City" formControlName="city" nbInput
+                                                fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('city')?.hasError('required') && vendorRegistrationFormGroup.get('city')?.touched">
+                                                Please Enter City
+                                            </span>
+
+                                        </div>
+
+                                        <div class="col-3 fieldwidth4">
+                                            <div class="mb-3 labels">
+                                                Region (State Code) *
+                                            </div>
+
+                                            <mat-select placeholder="select region" formControlName="StateCode">
+                                                <mat-option>
+                                                    <lib-mat-select-search [list]="regionDatas"
+                                                        [searchProperties]="['StateCode', 'State']"
+                                                        (filtered)="regionData = $event">
+                                                    </lib-mat-select-search>
+                                                </mat-option>
+
+                                                <mat-option *ngFor="let region of regionData"
+                                                    [value]="region.StateCode">
+                                                    {{ region.StateCode }} - {{region.State}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <!-- <nb-select
+
+                                            placeholder="Enter region"
+                                            formControlName="StateCode"
+                                            (selectedChange)="RegionOptions($event)"
+                                          >
+                                            <nb-option
+                                              *ngFor="let region of regionData"
+                                              [value]="region.StateCode"
+                                            >
+                                            {{ region.StateCode }} - {{region.State}}
+                                            </nb-option>
+                                          </nb-select> -->
+
+                                            <!-- <input #autoInputregion style="width: 100%;" nbInput type="text"
+                                             formControlName="StateCode" placeholder="Enter region"
+                                            [nbAutocomplete]="autoregion" />
+     -->
+                                            <!-- <nb-autocomplete #autoregion (selectedChange)="RegionOptions($event)"
+                                           >
+
+                                            <nb-option *ngFor="let region of regionData"
+                                                [value]="region">
+                                                {{ region.StateCode }} - {{region.State}}
+                                            </nb-option>
+
+                                        </nb-autocomplete> -->
+
+                                            <!-- <nb-select placeholder="State" shape="semi-round"
+                                                style="padding: 0px;width: 100%;" formControlName="StateCode">
+                                                <nb-option *ngFor="let region of regionData" [value]="region">{{region}}
+                                                </nb-option>
+                                            </nb-select> -->
+
+
+                                            <!-- <input type="text" placeholder="State Code" formControlName="StateCode"
+                                                nbInput fullWidth status="basic" class="inputfield mb-3"> -->
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('StateCode')?.hasError('required') && vendorRegistrationFormGroup.get('StateCode')?.touched">
+                                                Please Enter State Code
+                                            </span>
+                                            <!-- <div class="mb-3 labels">
+                                                State
+                                            </div>
+                                            <input type="text" placeholder="State" formControlName="state" nbInput
+                                                fullWidth status="basic" class="inputfield mb-3"> -->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 ">
+                                            <div class="mb-3 labels">
+                                                AddressLine 1 *
+                                            </div>
+                                            <input type="text" placeholder="AddressLine 1"
+                                                formControlName="AddressLine1" nbInput fullWidth status="basic"
+                                                class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('AddressLine1')?.hasError('maxlength') && vendorRegistrationFormGroup.get('AddressLine1')?.touched">
+                                                Maximum length 40
+                                            </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3 labels">
+                                                AddressLine 2 *
+                                            </div>
+                                            <input type="text" placeholder="AddressLine 2"
+                                                formControlName="AddressLine2" nbInput fullWidth status="basic"
+                                                class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('AddressLine2')?.hasError('maxlength') && vendorRegistrationFormGroup.get('AddressLine2')?.touched">
+                                                Maximum length 40
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3 labels">
+                                                AddressLine 3 *
+                                            </div>
+                                            <input type="text" placeholder="AddressLine 3"
+                                                formControlName="AddressLine3" nbInput fullWidth status="basic"
+                                                class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('AddressLine3')?.hasError('maxlength') && vendorRegistrationFormGroup.get('AddressLine3')?.touched">
+                                                Maximum length 40
+                                            </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3 labels">
+                                                AddressLine 4
+                                            </div>
+                                            <input type="text" placeholder="AddressLine 4"
+                                                formControlName="AddressLine4" nbInput fullWidth status="basic"
+                                                class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('AddressLine4')?.hasError('maxlength') && vendorRegistrationFormGroup.get('AddressLine4')?.touched">
+                                                Maximum length 40
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3 labels">
+                                                AddressLine 5
+                                            </div>
+                                            <input type="text" placeholder="AddressLine 5"
+                                                formControlName="AddressLine5" nbInput fullWidth status="basic"
+                                                class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('AddressLine5')?.hasError('maxlength') && vendorRegistrationFormGroup.get('AddressLine5')?.touched">
+                                                Maximum length 40
+                                            </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                MSME Type *
+                                            </div>
+                                            <nb-select placeholder="MSME Types" shape="semi-round"
+                                                formControlName="MSMEType" (selectedChange)="changeOptions()">
+
+                                                <nb-option *ngFor="let MSMEtype of MSMETypes" [value]="MSMEtype">
+                                                    {{MSMEtype}}
+                                                </nb-option>
+                                            </nb-select>
+                                            <!-- <input type="text" formControlName="MSMEType" nbInput fullWidth
+                                                status="basic" class="inputfield mb-3"> -->
+                                        </div>
+                                        <!-- <div class="col-3">
+                                            <div class="mb-3 labels">
+                                                Type of Industry
+                                            </div>
+                                            <nb-select placeholder="Industry Types " shape="semi-round"
+                                                formControlName="TypeOfIndustry">
+                                                <nb-option *ngFor="let types of TypeofIndustryTypes"
+                                                    [value]="types">{{types}}
+                                                </nb-option>
+                                            </nb-select>
+
+                                        </div> -->
+                                    </div>
+                                    <div class="row" *ngIf="MSMEAttachement">
+                                        <div class="col-6">
+                                            <div class="mb-3 labels">
+                                                Certificate No. *
+                                            </div>
+
+                                            <input type="text" placeholder="Certificate No."
+                                                oninput="this.value = this.value.trimStart().toUpperCase()"
+                                                formControlName="certificateNo" nbInput fullWidth status="basic"
+                                                class="inputfield1 mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('certificateNo')?.hasError('maxlength') && vendorRegistrationFormGroup.get('certificateNo')?.touched">
+                                                Maximum length 30
+                                            </span>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="mb-3 labels">
+                                              Classification from date *
+                                            </div>
+                                            <input nbInput placeholder="Valid From" type="date"
+                                                formControlName="validFrom" style="width: 96.7%;" max="{{maxdate | date:'yyyy-MM-dd'}}">
+                                           <!-- <nb-datepicker [max]="max" #dateTimePicker></nb-datepicker> -->
+                                            <!-- <input type="text" nbInput fullWidth status="basic" class="inputfield mb-3"> -->
+                                        </div>
+                                        <div class="col-3">
+                                            <!-- <div class="row"> -->
+                                            <div class="mb-3 labels">
+                                              Classification to date *
+                                                <!-- <button nbTooltip="This is a tooltip" nbTooltipPlacement="top" nbButton status="basic">
+                                                    Default
+                                                  </button> -->
+                                                <!-- <img nbTooltip="Valid To date should be greater than today's date"  nbTooltipPlacement="right" class="info_button" src="/assets/images/alert-circle.svg"> -->
+                                            </div>
+
+                                            <!-- </div> -->
+                                            <input nbInput placeholder="Valid To"  type="date" min="{{mindate | date:'yyyy-MM-dd'}}"
+                                                formControlName="validTo" style="width: 96.7%;">
+                                            <!-- <nb-datepicker [min]="min" #dateTimePicker1></nb-datepicker> -->
+                                            <!-- <input type="text" nbInput fullWidth status="basic"
+                                                class="inputfield1 mb-3"> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row">
+                                        <div class="col-3">
+                                            <div class="mb-3 labels">
+                                                Certificate No.
+                                            </div>
+                                            <input type="text" nbInput fullWidth status="basic" class="inputfield mb-3">
+                                        </div>
+                                    </div> -->
+                                    <div class="row" *ngIf="MSMEAttachement">
+
+                                        <div class="col-6">
+                                            <div class="mb-3 labels">
+                                                Registration City *
+                                            </div>
+                                            <input type="text" nbInput placeholder="Registration City" fullWidth
+                                                formControlName="RegisterCity" status="basic" class="inputfield1 mb-3">
+                                            <span class="error"
+                                                *ngIf="vendorRegistrationFormGroup.get('RegisterCity')?.hasError('maxlength') && vendorRegistrationFormGroup.get('RegisterCity')?.touched">
+                                                Maximum length 25
+                                            </span>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </nb-card-body>
+                    </nb-card>
+                </form>
+
+
+                <nb-card class="nbcard-1">
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="basic-title">
+                                        Identification Table
+                                    </div>
+                                    <div>
+                                        <img class="files-img" src="/assets/images/attachments.svg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col ">
+                                <form [formGroup]="identificationFormGroup">
+                                    <div class="row">
+                                        <div class="col-3 fieldwidth4">
+                                            <div class="mb-3 labels">
+                                                Type
+                                            </div>
+                                            <nb-select placeholder="Type" shape="semi-round" formControlName="Type"
+                                                (selectedChange)="changeAttachmentOptions()">
+                                                <nb-option *ngFor="let type of AllIdentityTypes" [value]="type"
+                                                    [matTooltip]="type">
+                                                    {{type}}
+                                                </nb-option>
+                                            </nb-select>
+                                            <!-- <input type="text" formControlName="Type" nbInput fullWidth status="basic" class="inputfield mb-3"> -->
+                                        </div>
+                                        <div class="col-3 fieldwidth4">
+                                            <div class="mb-3  labels" *ngIf="attachementid !== 'Others'">
+                                                {{attachementid}} No.
+                                            </div>
+                                            <div class="mb-3  labels" *ngIf="attachementid === 'Others'">
+                                                ID
+                                            </div>
+
+                                            <input type="text" nbInput placeholder={{attachementid}} fullWidth
+                                                formControlName="IDNumber" status="basic" class="inputfield1 mb-3">
+                                            <span class="error"
+                                                *ngIf="identificationFormGroup.get('IDNumber').hasError('pattern') && identificationFormGroup.get('IDNumber')?.touched">
+                                                Please Enter valid {{attachementid}} Number
+                                            </span>
+                                        </div>
+                                        <div class="col-3">
+                                            <button mat-button class="cancel-btn" (click)="fileInput2.click()">
+                                                <!-- <img class="addBlueIcon" src="/assets/images/add.svg" (click)="fileInput2.click()"> -->
+                                                <span class="attachClass">
+                                                    Add Attachment
+                                                </span>
+                                            </button>
+                                            <input hidden type="file" #fileInput2 id="file2"
+                                                (change)="handleFileInput($event)" />
+                                        </div>
+                                        <!-- <div class="col-3 filename">
+                                            <div *ngIf="fileToUpload?.name">
+                                                <span fxFlex>{{fileToUpload?.name}}</span>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-3 filename">
+                                            <button mat-button class="add-btn"
+                                                (click)="AddIdentificationToTableDataSource()">
+                                                <img class="addimg" src="/assets/images/add.svg">
+                                                Add</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row  table_details">
+                                    <!-- <nb-card class="table-responsive info-scroll-app"> -->
+                                    <table mat-table [dataSource]="identificationDataSource" matSort>
+                                        <ng-container matColumnDef="select">
+                                            <th mat-header-cell *matHeaderCellDef>
+                                                <mat-checkbox class="head-checkbox"
+                                                    (change)="$event ? masterToggle() : null"
+                                                    [checked]="selection.hasValue() && isAllSelected()"
+                                                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                                                </mat-checkbox>
+                                            </th>
+                                            <td mat-cell *matCellDef="let row;let odd=odd" class="tableLeftBorder">
+                                                <div>
+                                                    <div [style.background-color]="odd?'#6f52ed':'#d87e39'"></div>
+                                                    <div fxFlex class="pl-4">
+                                                        <mat-checkbox (click)="$event.stopPropagation()"
+                                                            (change)="$event ? selection.toggle(row) : null"
+                                                            [checked]="selection.isSelected(row)">
+                                                        </mat-checkbox>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Type">
+                                            <th mat-header-cell *matHeaderCellDef> Type </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.docType}}
+                                                <span
+                                                    *ngIf="element.docType !== 'Others' && element.docType !== 'GSTIN'  && element.docType !== 'MSME Certificate' && BPVendorOnBoarding.isDocRequired"
+                                                    style="color: red;">*</span>
+                                                <span *ngIf="GSTAttachment && BPVendorOnBoarding.isDocRequired">
+                                                    <span *ngIf="element.docType === 'GSTIN'" style="color: red;">*
+                                                    </span>
+
+                                                </span>
+                                                <span *ngIf="MSMEAttachement">
+                                                    <span *ngIf="element.docType === 'MSME Certificate' && BPVendorOnBoarding.isDocRequired"
+                                                        style="color: red;">*
+                                                    </span>
+
+                                                </span>
+                                                <!-- <span *ngIf="cancelchequeattcahement">
+                                                    <span *ngIf="element.docType === 'CANCEL CHEQUE'"
+                                                        style="color: red;">*
+                                                    </span>
+                                                </span> -->
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Attachment">
+                                            <th mat-header-cell *matHeaderCellDef> Attachment Name</th>
+                                            <td mat-cell *matCellDef="let element;let index=index" style="width: 20%;">
+                                                <div *ngIf="element.attachmentName">
+                                                    <div (click)="GetIdentAttachment(element)"
+                                                        class="pdfLinkClass pl-8">
+                                                        {{element.attachmentName}}</div>
+                                                    <!-- <div fxFlex align="end">
+                                                    <img class="addBlueIcon pdfLinkClass" src="assets/images/replay.png"
+                                                      (click)="ReplaceIdentificationAttachment(element)">
+                                                  </div> -->
+                                                </div>
+                                                <!-- <div fxLayout *ngIf="!element.AttachmentName">
+                                                  <img *ngIf="element?.Type" class="addBlueIcon" style="margin-left: 10px !important;"
+                                                    src="assets/images/clip.png" (click)="ReplaceIdentificationAttachment(element)">
+                                                </div> -->
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="IDNumber">
+                                            <th mat-header-cell *matHeaderCellDef> ID </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.idNumber}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Size">Ks
+                                            <th mat-header-cell *matHeaderCellDef> Size </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.size| number:'1.2-2' }} KB
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Date">
+                                            <th mat-header-cell *matHeaderCellDef> Date </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.date | date:'shortDate'}}
+                                                | {{element.date | date:'shortTime'}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Action">
+                                            <th mat-header-cell *matHeaderCellDef> Action </th>
+                                            <td mat-cell *matCellDef="let row;let odd=odd">
+                                                <div class="row" *ngIf="row.attachmentName?.length">
+                                                    <div class="col">
+                                                        <img class="edit-img" (click)="SelectIdentityRow(row)"
+                                                            src="/assets/images/edit.svg">
+                                                        <img class="edit-img" (click)="removeidentityFromTable(row)"
+                                                            src="/assets/images/delete.svg">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="identificationDisplayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: identificationDisplayedColumns;">
+                                        </tr>
+                                    </table>
+                                    <!-- alert-circle-outline -->
+                                    <div class="d-flex justify-content-center" class="TableFooter"
+                                        style="margin-top: 20px;" *ngIf="!IdentificationsByVOB?.length">
+                                        <nb-icon style="margin-top: 10px;" icon="alert-circle-outline"></nb-icon>
+                                        <span style="margin-left: 10px;">The table does not contain any records</span>
+                                    </div>
+                                    <!-- </nb-card> -->
+                                </div>
+                            </div>
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+
+                <nb-card class="nbcard-1">
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="basic-title">
+                                        Bank Details
+                                    </div>
+                                    <div>
+                                        <img class="bank-img" src="/assets/images/bank.svg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col ">
+                                <form [formGroup]="bankDetailsFormGroup">
+                                    <div class="row">
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                IFSC Code *
+                                            </div>
+                                            <input type="text" placeholder="IFSC Code" formControlName="IFSC" nbInput
+                                                oninput="this.value = this.value.trimStart().toUpperCase()" fullWidth
+                                                status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('IFSC').hasError('pattern')  && bankDetailsFormGroup.get('IFSC')?.touched">
+                                                Please Enter valid IFSC
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('IFSC')?.hasError('required') && bankDetailsFormGroup.get('IFSC')?.touched">
+                                                Please Enter IFSC
+                                            </span>
+
+                                        </div>
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Account Number *
+                                            </div>
+                                            <input type="text" placeholder="Account Number" formControlName="AccountNo"
+                                                nbInput fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="(bankDetailsFormGroup.get('AccountNo').hasError('pattern') || bankDetailsFormGroup.get('AccountNo')?.hasError('minlength'))&& bankDetailsFormGroup.get('AccountNo')?.touched">
+                                                Please Enter valid Account Number
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('AccountNo')?.hasError('required') && bankDetailsFormGroup.get('AccountNo')?.touched">
+                                                Please Enter Account Number
+                                            </span>
+
+                                            <!-- <span class="error"
+                                            *ngIf="bankDetailsFormGroup.get('AccountNo')?.hasError('maxlength') && bankDetailsFormGroup.get('AccountNo')?.touched">
+                                            Maximum length 18
+                                        </span> -->
+                                        </div>
+                                        <!-- <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Account Holder Name
+                                            </div>
+                                            <input type="text" placeholder="Account Holder Name" nbInput
+                                                formControlName="Name" fullWidth status="basic" class="inputfield mb-3">
+
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('Name')?.hasError('required') && bankDetailsFormGroup.get('Name')?.touched ">
+                                                Please Enter Name
+                                            </span>
+                                        </div> -->
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Bank Name *
+                                            </div>
+                                            <input type="text" placeholder="Bank Name" formControlName="BankName"
+                                                nbInput fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('BankName')?.hasError('required') && bankDetailsFormGroup.get('BankName')?.touched ">
+                                                Please Enter Bank Name
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('BankName')?.hasError('maxlength') && bankDetailsFormGroup.get('BankName')?.touched">
+                                                Maximum length 60
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                City *
+                                            </div>
+                                            <input type="text" placeholder="City" formControlName="City" nbInput
+                                                fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('City')?.hasError('required') && bankDetailsFormGroup.get('City')?.touched ">
+                                                Please Enter City
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('City')?.hasError('maxlength') && bankDetailsFormGroup.get('City')?.touched">
+                                                Maximum length 35
+                                            </span>
+                                        </div>
+                                        <div class="col-4">
+
+                                            <div class="mb-3 labels">
+                                                Branch *
+                                            </div>
+                                            <input type="text" placeholder="Branch" formControlName="Branch" nbInput
+                                                fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('Branch')?.hasError('required') && bankDetailsFormGroup.get('Branch')?.touched ">
+                                                Please Enter Branch
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="bankDetailsFormGroup.get('Branch')?.hasError('maxlength') && bankDetailsFormGroup.get('Branch')?.touched">
+                                                Maximum length 40
+                                            </span>
+                                        </div>
+                                        <div class="col-2 addbtn">
+                                            <button mat-button class="add1-btn"
+                                                (click)="AddBankToTableDataSource($event)">
+                                                <img class="addimg" src="/assets/images/add.svg">
+                                                Add</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row  table_details">
+                                    <table mat-table [dataSource]="bankDetailsDataSource" matSort>
+                                        <ng-container matColumnDef="select">
+                                            <th mat-header-cell *matHeaderCellDef>
+                                                <mat-checkbox class="head-checkbox"
+                                                    (change)="$event ? masterToggle1() : null"
+                                                    [checked]="selection1.hasValue() && isAllSelected1()"
+                                                    [indeterminate]="selection1.hasValue() && !isAllSelected1()">
+                                                </mat-checkbox>
+                                            </th>
+                                            <td mat-cell *matCellDef="let row;let odd=odd" class="tableLeftBorder">
+                                                <div>
+                                                    <div [style.background-color]="odd?'#6f52ed':'#d87e39'"></div>
+                                                    <div fxFlex class="pl-4">
+                                                        <mat-checkbox (click)="$event.stopPropagation()"
+                                                            (change)="$event ? selection1.toggle(row) : null"
+                                                            [checked]="selection1.isSelected(row)">
+                                                        </mat-checkbox>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="IFSC">
+                                            <th mat-header-cell *matHeaderCellDef> IFSC </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.ifsc}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="AccountNo">
+                                            <th mat-header-cell *matHeaderCellDef> AccountNumber </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.accountNo}} </td>
+                                        </ng-container>
+                                        <!-- <ng-container matColumnDef="Name">
+                                            <th mat-header-cell *matHeaderCellDef> HolderName </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="BankName">
+                                            <th mat-header-cell *matHeaderCellDef> Bankname </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.bankName}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="city">
+                                            <th mat-header-cell *matHeaderCellDef> City </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Branch">
+                                            <th mat-header-cell *matHeaderCellDef> Branch </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.branch}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Action">
+                                            <th mat-header-cell *matHeaderCellDef> Action </th>
+                                            <td mat-cell *matCellDef="let row;let odd=odd">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <img class="edit-img" (click)="BankRowClicked(row)"
+                                                            src="/assets/images/edit.svg">
+                                                        <img class="edit-img" (click)="RemoveBankFromTable(row)"
+                                                            src="/assets/images/delete.svg">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+
+                                        <tr mat-header-row *matHeaderRowDef="bankDetailsDisplayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: bankDetailsDisplayedColumns;"></tr>
+                                    </table>
+                                    <div class="d-flex justify-content-center" class="TableFooter"
+                                        style="margin-top: 20px;" *ngIf="!BanksByVOB?.length">
+                                        <nb-icon style="margin-top: 10px;" icon="alert-circle-outline"></nb-icon>
+                                        <span style="margin-left: 10px;">The table does not contain any records</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+
+
+                <!-- <nb-card class="nbcard-1">
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="basic-title">
+                                        Contact Persons
+                                    </div>
+                                    <div>
+                                        <img class="bank-img" src="/assets/images/contact.svg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col ">
+                                <form [formGroup]="contactFormGroup">
+                                    <div class="row">
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Name
+                                            </div>
+                                            <input type="text" placeholder="Name" formControlName="Name" nbInput
+                                                fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="contactFormGroup.get('Name')?.hasError('required') && contactFormGroup.get('Name')?.touched ">
+                                                Please Enter Name
+                                            </span>
+                                        </div>
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Department
+                                            </div>
+
+                                            <input type="text" placeholder="Department" formControlName="department"
+                                                nbInput fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="contactFormGroup.get('department')?.hasError('required') && contactFormGroup.get('department')?.touched ">
+                                                Please Enter Department
+                                            </span>
+
+                                        </div>
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Title
+                                            </div>
+                                            <input type="text" placeholder="Title" formControlName="Title" nbInput
+                                                fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="contactFormGroup.get('Title')?.hasError('required') && contactFormGroup.get('Title')?.touched ">
+                                                Please Enter Title
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Mobile Number
+                                            </div>
+                                            <input type="text" placeholder="Mobile Number" formControlName="Mobile"
+                                                nbInput fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="contactFormGroup.get('Mobile')?.hasError('required') && contactFormGroup.get('Mobile')?.touched">
+                                                Please Enter Mobile Number
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="contactFormGroup.get('Mobile').hasError('pattern') && contactFormGroup.get('Mobile')?.touched">
+                                                Please Enter valid Mobile Number
+                                            </span>
+                                        </div>
+                                        <div class="col-4 fieldwidth2">
+                                            <div class="mb-3 labels">
+                                                Email Id
+                                            </div>
+                                            <input type="text" placeholder="Email Id" formControlName="Email" nbInput
+                                                fullWidth status="basic" class="inputfield mb-3">
+                                            <span class="error"
+                                                *ngIf="contactFormGroup.get('Email')?.hasError('required') && contactFormGroup.get('Email')?.touched">
+                                                Please Enter Email
+                                            </span>
+                                            <span class="error"
+                                                *ngIf="contactFormGroup.get('Email').hasError('pattern') && contactFormGroup.get('Email')?.touched">
+                                                Please Enter valid Email
+                                            </span>
+                                        </div>
+                                        <div class="col-2 savebtn">
+                                            <button mat-button class="save-btn" (click)="AddContactToTableDataSource()">
+                                                <img class="saveimg" src="/assets/images/save.svg">
+                                                save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row  table_details">
+                                    <table mat-table [dataSource]="contactDataSource" matSort>
+                                        <ng-container matColumnDef="select">
+                                            <th mat-header-cell *matHeaderCellDef>
+                                                <mat-checkbox class="head-checkbox"
+                                                    (change)="$event ? masterToggle2() : null"
+                                                    [checked]="selection2.hasValue() && isAllSelected2()"
+                                                    [indeterminate]="selection2.hasValue() && !isAllSelected2()">
+                                                </mat-checkbox>
+                                            </th>
+                                            <td mat-cell *matCellDef="let row;let odd=odd" class="tableLeftBorder">
+                                                <div fxLayout>
+                                                    <div [style.background-color]="odd?'#6f52ed':'#d87e39'"></div>
+                                                    <div fxFlex class="pl-4">
+                                                        <mat-checkbox (click)="$event.stopPropagation()"
+                                                            (change)="$event ? selection2.toggle(row) : null"
+                                                            [checked]="selection2.isSelected(row)">
+                                                        </mat-checkbox>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Name">
+                                            <th mat-header-cell *matHeaderCellDef> Name </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="department">
+                                            <th mat-header-cell *matHeaderCellDef> Department </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.Department}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Title">
+                                            <th mat-header-cell *matHeaderCellDef> Title </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Mobile">
+                                            <th mat-header-cell *matHeaderCellDef> Mobilenumber </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.Mobile}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Email">
+                                            <th mat-header-cell *matHeaderCellDef> EmailId </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Action">
+                                            <th mat-header-cell *matHeaderCellDef> Action </th>
+                                            <td mat-cell *matCellDef="let row;let odd=odd">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <img class="edit-img" (click)="ContactPersonsClicked(row)"
+                                                            src="/assets/images/edit.svg">
+                                                        <img class="edit-img" (click)="RemoveContactFromTable(row)"
+                                                            src="/assets/images/delete.svg">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="contactDisplayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: contactDisplayedColumns;"></tr>
+                                    </table>
+                                    <div class="d-flex justify-content-center" class="TableFooter"
+                                        style="margin-top: 20px;" *ngIf="!ContactsByVOB?.length">
+                                        <nb-icon style="margin-top: 10px;" icon="alert-circle-outline"></nb-icon>
+                                        <span style="margin-left: 10px;">The table does not contain any records</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nb-card-body>
+                </nb-card> -->
+            </div>
+
+            <div id="footerCard">
+                <div class="row">
+                    <div class="col-11 d-flex justify-content-end">
+                        <!-- <div>
+                            <button mat-button class="cancel-btn" (click)="savedraft()">
+                                <img class="close-img" src="/assets/images/close.svg">
+                                Cancel</button>
+                        </div> -->
+
+                        <div>
+                            <button mat-button class="submit-btn" (click)="SaveClicked('Submit')">
+                                <img class="close-img" src="/assets/images/tick.svg">
+                                Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <mat-progress-spinner *ngIf="IsProgressBarVisibile" class="progressBarPostion" color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+    <div id="overlay" *ngIf="IsProgressBarVisibile"></div>
+</div>

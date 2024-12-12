@@ -1,0 +1,200 @@
+<div id="users">
+    <div class="row">
+        <div class="col-12">
+            <!-- <div class="col-sm-10 title">
+                OnBoardFiled Configuration
+            </div> -->
+        </div>
+        <div class="col-3">
+            <div class="row">
+                <div class="col-8">
+                    <input [(ngModel)]="searchText" type="text" placeholder="Search" nbInput fullWidth status="basic">
+                </div>
+                <div class="col-4">
+                    <button class="AddBtn" (click)="ResetControl()" *ngIf="buttonhidden">
+                        <img class="logo" src="/assets/images/plus.svg">
+                        Add</button>
+                </div>
+
+
+
+            </div>
+            <div class="row side-bar">
+                <div class="sidenav-content">
+                    <div *ngFor="let OnBoardingFieldMaster  of search()">
+                        <div>
+                            <nb-card style="margin-bottom: 0px;margin-top:10px;">
+                                <nb-card-body style="padding: 0px;overflow: hidden;">
+                                    <div class="mx-8 mb-8 mt-0 leftCard"
+                                        (click)="loadSelectedUserCreationMaster(OnBoardingFieldMaster )"
+                                        [style.border-left-color]="selectID ==OnBoardingFieldMaster.userName?'#035f88':'#cccccc'">
+                                        <div class="row  d-flex justify-content-between"
+                                            style="padding: 10px 50px 10px 10px;">
+                                            <div class="col-3 strong_label">
+                                                <strong>{{OnBoardingFieldMaster.userName}}</strong>
+                                            </div>
+                                            <!-- <div class="col-3 labels" align="end">{{OnBoardingFieldMaster.createdOn |
+                                                date
+                                                :'dd/MM/yyyy'}}
+                                            </div> -->
+                                        </div>
+                                        <div style="padding: 0px 0px 10px 10px;">
+                                            <div class="labels">{{OnBoardingFieldMaster.text}}</div>
+                                        </div>
+
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <!-- <div *ngIf="(AllOnBoardingFieldMasters  | filter: searchText)?.length === 0"
+                        class="no-results-message">
+                        <span class="pl-12"> No results..</span>
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+        <div class="col">
+            <form [formGroup]="UserCreationFormGroup">
+                <nb-card>
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        FirstName
+                                    </div>
+                                    <input type="text" nbInput placeholder="FirstName" formControlName="FirstName"
+                                        fullWidth status="basic" class="fieldwidth2 mb-3">
+                                    <span class="error"
+                                        *ngIf="UserCreationFormGroup.get('FirstName').touched &&  UserCreationFormGroup.get('FirstName').hasError('required')">
+                                        FirstName is required</span>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        LastName
+                                    </div>
+                                    <input type="text" nbInput placeholder="LastName" formControlName="LastName"
+                                        fullWidth status="basic" class="fieldwidth2 mb-3">
+                                    <!-- <span
+                                        *ngIf="UserCreationFormGroup.get('LastName').touched &&  UserCreationFormGroup.get('FirstName').hasError('required')">
+                                        FirstName is required</span> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Email
+                                    </div>
+                                    <input type="text" nbInput placeholder="Email" formControlName="Email" fullWidth
+                                        status="basic" class="fieldwidth2 mb-3">
+                                    <span class="error"
+                                        *ngIf="UserCreationFormGroup.get('Email').touched && UserCreationFormGroup.get('Email').hasError('required')">
+                                        Email is required
+                                    </span>
+                                    <span class="error"
+                                        *ngIf="UserCreationFormGroup.get('Email').hasError('pattern') && UserCreationFormGroup.get('Email')?.touched">
+                                        Please Enter valid Email
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        MobileNo
+                                    </div>
+                                    <input type="text" nbInput placeholder="MobileNo" formControlName="MobileNo"
+                                        fullWidth status="basic" class="fieldwidth2 mb-3">
+                                    <span class="error"
+                                        *ngIf="UserCreationFormGroup.get('MobileNo').touched && UserCreationFormGroup.get('MobileNo').hasError('required')">
+                                        Mobile Number is required
+                                    </span>
+                                    <span class="error"
+                                        *ngIf="UserCreationFormGroup.get('MobileNo').hasError('pattern') && UserCreationFormGroup.get('MobileNo')?.touched">
+                                        Please Enter valid Mobile Number
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Password
+                                    </div>
+                                    <nb-form-field style="padding: 0px;width: 74%;">
+                                        <input [type]="hide ? 'password' : 'text'" nbInput placeholder="Password"
+                                            formControlName="Password" fullWidth status="basic" class="mb-3">
+                                        <nb-icon nbSuffix [icon]="hide ? 'eye-off-outline' : 'eye-outline'"
+                                            style="margin-bottom: 15px;" (click)="togglePasswordVisibility()"></nb-icon>
+                                    </nb-form-field>
+                                    <span class="error"
+                                        *ngIf="UserCreationFormGroup.get('Password').touched && UserCreationFormGroup.get('Password').hasError('required')">
+                                        Password is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Active
+                                    </div>
+                                    <nb-select placeholder="Active" shape="semi-round" formControlName="Active" style="padding: 0px;">
+                                        <nb-option *ngFor="let Active of Active" [value]="Active">
+                                            {{Active}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span class="error"
+                                        *ngIf="UserCreationFormGroup.get('Active').touched && UserCreationFormGroup.get('Active').hasError('required')">
+                                        Active is required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="mb-3 ">
+                                        Role
+                                    </div>
+                                    <nb-select placeholder="Role" shape="semi-round" formControlName="Role"  style="padding: 0px;">
+                                        <nb-option *ngFor="let role of userRole" [value]="role">
+                                            {{role}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span class="error"
+                                        *ngIf="UserCreationFormGroup.get('Role').touched && UserCreationFormGroup.get('Role').hasError('required')">
+                                        Role is required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+            </form>
+        </div>
+        <div class="footerCard">
+
+            <nb-card class="footerbutton">
+                <nb-card-body style="padding: 10px 10px 10px 10px;">
+                    <div class="d-flex justify-content-end">
+                        <button (click)="UpdateClicked()" class="SaveBtn" mat-raised-button *ngIf="buttonhidden">
+                            Update</button>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button (click)="SaveClicked()" class="SaveBtn" mat-raised-button *ngIf="!buttonhidden">
+                            Save</button>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+    <mat-progress-spinner *ngIf="isProgressBarVisibile" class="progressBarPostion" color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+    <div id="overlay" *ngIf="isProgressBarVisibile"></div>
+</div>

@@ -1,0 +1,186 @@
+#Identity {
+    width: 100%;
+    background-color: rgb(245 245 245);
+    padding: 20px 0px 0px 0px !important;
+    // height: 83vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+        font-size: 18px;
+        font-weight: 600;
+        padding: 4px 16px 16px 16px;
+        color: #455261;
+    }
+
+    .leftCard {
+        // @include mat-elevation(2);
+        background: white;
+        // border-left: 5px solid #035f88;
+        border-left: 5px solid;
+        // margin-left: 20px;
+        cursor: pointer !important;
+    }
+    .progressBarPostion {
+        position: absolute !important;
+        bottom: 50%;
+        z-index: 1;
+        left: 55%;
+      }
+    .side-bar {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        .sidenav-content {
+            height: 61vh;
+            margin-bottom: 0px;
+            overflow: auto;
+        }
+    }
+
+    .footerCard {
+        // position: absolute;
+        height: 80px;
+        
+        background-color: #e8ebfa;
+        bottom: 0px;
+        // left: 0px;
+        // right: 0px;
+        margin-bottom: 0px;
+        z-index: 100;
+        width: 100%;
+        right: 0px;
+    }
+
+    .footerbutton {
+        margin-top: 12px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 11px;
+    }
+
+    .SaveBtn {
+
+        background-color: #035f88;
+        border-color: #035f88;
+        border-radius: 7px;
+        // width: 10%;
+        // height: 5vh;
+        font-size: 13px;
+        color: white;
+        position: relative;
+        border: 1px solid;
+        width: fit-content;
+    }
+    .AddBtn {
+
+        background-color: #035f88;
+        border-color: #035f88;
+        border-radius: 7px;
+        //width: 100%;
+        // height: 5.5vh;
+        font-size: 13px;
+        color: white;
+        position: relative;
+        border: 1px solid;
+        min-width: fit-content;
+        min-height: fit-content;
+        padding: 4px 10px;
+    }
+    .fieldwidth2 {
+        width: 74%;
+    }
+
+    .DeleteBtn {
+        background-color: #ebf3fc;
+        color: #035f88;
+        border-color: #b1cedf;
+        border-radius: 7px;
+        // width: 10%;
+        // height: 5vh;
+        margin-right: 14px;
+        border: 1px solid;
+        width: fit-content;
+    }
+
+    .floatBtn {
+        width: 50px;
+        height: 50px;
+        border-radius: 30px;
+        border-color: #e6e9f7;
+        border: 1px solid #e6e9f7;
+    }
+
+    .error {
+        color: red;
+        font-size: 10px;
+    }
+
+    .strong_label {
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    .labels {
+        font-size: 13px;
+    }
+
+    // width: 100%;
+    // background-color: rgb(245 245 245);
+    // padding: 20px 20px 20px 20px!important;
+
+    // .title {
+    //     font-size: 15px;
+    //     font-weight: 600;
+    //     padding: 16px 18px 0px 16px;
+    //     color: #455261;
+    // }
+    // .leftCard {
+    //     // @include mat-elevation(2);
+    //     background: white;
+    //     border-left: 5px solid #035f88;
+    //     // margin-left: 20px;
+    //     cursor: pointer !important;
+    // }
+    // .side-bar {
+    //     display: flex;
+    //     flex: 1;
+    //     flex-direction: column;
+    //     .sidenav-content {
+    //         // overflow: auto;
+    //         // overflow-x: hidden;
+    //         // -webkit-overflow-scrolling: touch;
+    //     }
+    // }
+    // .footerCard{
+    //     position: fixed;
+    //     height: 50px;
+    //     box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.16);
+    //     background-color: #ffffff;
+    //     bottom: 0px;
+    //     // left: 0px;
+    //     // right: 0px;
+    //     margin-bottom: 0px;
+    //     z-index: 100;
+    //     width: 83%;
+    // }
+    // .SaveBtn{
+
+    //         background-color: #035f88;
+    //         border-color: #035f88;
+    //         border-radius: 7px;
+    //         width: 10%;
+    //         height: 5vh;
+    //         font-size: 13px;
+    //         color: white;
+    //         position: relative;
+
+    // }
+    // .fieldwidth2 {
+    //     width: 74%;
+    // }
+}

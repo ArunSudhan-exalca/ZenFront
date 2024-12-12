@@ -1,0 +1,184 @@
+<div id="initiator">
+    <div class="col">
+        <form [formGroup]="IntiatiorFormGroup">
+            <nb-card class="card-reg">
+                <nb-card-body>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="row">
+                                <div class="register-title">Register</div>
+                                <img class="register-img" src="/assets/images/initiator-reg.svg">
+                            </div>
+                        </div>
+                        <!-- <mat-divider vertical="true"></mat-divider> -->
+
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="mb-3 title">
+                                        Vendor Account Group
+                                    </div>
+                                    <nb-select placeholder="Account Group" shape="semi-round"
+                                        style="padding: 0px;width: 100%;" formControlName="AccountGroup">
+                                        <nb-option *ngFor="let Accountgroup of AccountGroup"
+                                            [value]="Accountgroup">{{Accountgroup}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span class="error"
+                                        *ngIf="IntiatiorFormGroup.get('AccountGroup').hasError('pattern') || (IntiatiorFormGroup.get('AccountGroup')?.hasError('required') && IntiatiorFormGroup.get('AccountGroup')?.touched)">
+                                        Please Enter Account Group
+                                    </span>
+                                    <!-- <input type="text" placeholder="Account Group" nbInput fullWidth status="basic"
+                                    class="inputfield"> -->
+                                </div>
+                                <div class="col-4">
+                                    <div class="mb-3 title">
+                                        Company Code
+                                    </div>
+                                    <!-- <input formControlName="CompanyGroup" nbInput type="text" style="width: 100%;"
+                                    placeholder="CompanyGroup" /> -->
+<!-- 
+                                <nb-autocomplete #auto [handleDisplayFn]="viewHandle">
+
+                                    <nb-option *ngFor="let company of filteredOptionscompany | async" [value]="company">
+                                        {{ company }}
+                                    </nb-option>
+
+                                </nb-autocomplete> -->
+                                    <nb-select placeholder="Company Code" shape="semi-round" [(selected)] ="CompanyselectedItem"
+                                        style="padding: 0px;width: 100%;" formControlName="CompanyGroup">
+                                        <nb-option *ngFor="let company of CompanyCode" [value]="company">{{company}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <!-- <span class="error"
+                                        *ngIf="IntiatiorFormGroup.get('CompanyGroup').hasError('pattern') || (IntiatiorFormGroup.get('CompanyGroup')?.hasError('required'))">
+                                        Please Enter Company Code
+                                    </span> -->
+                                    <!-- <input type="text" placeholder="Company Code" nbInput fullWidth status="basic"
+                                    class="inputfield"> -->
+                                </div>
+                                <div class="col-4">
+                                    <div class="mb-3 title">
+                                        Purchase Organisation
+                                    </div>
+                                    <!-- <input formControlName="PurachseGroup" nbInput type="text" style="width: 100%;"
+                                        placeholder="PurchaseGroup"  /> -->
+
+                                    <!-- <nb-autocomplete #autos [handleDisplayFn]="viewHandle">
+
+                                        <nb-option *ngFor="let Purchasegroup of filteredOptions | async" [value]="Purchasegroup">
+                                            {{ Purchasegroup }}
+                                        </nb-option>
+
+                                    </nb-autocomplete> -->
+                                    <nb-select placeholder="PurchaseGroup" shape="semi-round" [(selected)]="PurchasegroupselectedItem"
+                                        style="padding: 0px;width: 100%;" formControlName="PurachseGroup">
+                                        <nb-option *ngFor="let Purchasegroup of PurchaseGroup"
+                                            [value]="Purchasegroup">{{Purchasegroup}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <!-- <input type="text" placeholder="Purchase Organisation" nbInput fullWidth
+                                        status="basic" class="inputfield" formControlName="PurachseGroup"> -->
+                                    <!-- <span class="error"
+                                        *ngIf=" (IntiatiorFormGroup.get('PurachseGroup')?.hasError('required') && IntiatiorFormGroup.get('PurachseGroup')?.touched)">
+                                        Please Enter Purchase Organisation
+                                    </span> -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <div class="col-4">
+                                    <div class="mb-3 title-second">
+                                        Plant Code
+                                    </div>
+                                    <nb-select placeholder="Plant Code" shape="semi-round"
+                                        style="padding: 0px;width: 100%;" formControlName="Plant">
+                                        <nb-option *ngFor="let Plant of PlantCode" [value]="Plant">{{Plant}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span class="error"
+                                        *ngIf="IntiatiorFormGroup.get('Plant').hasError('pattern') || (IntiatiorFormGroup.get('Plant')?.hasError('required') && IntiatiorFormGroup.get('Plant')?.touched)">
+                                        Please Enter Plant Code
+                                    </span>
+                                   
+                                </div> -->
+                                <div class="col-4">
+                                    <div class="mb-3 title-second">
+                                        GST Vendor Classification
+                                    </div>
+                                    <nb-select placeholder="GST Vendor Classification" shape="semi-round"
+                                        style="padding: 0px;width: 100%;" formControlName="GSTValue">
+                                        <nb-option *ngFor="let Gst of Gst" [value]="Gst">{{Gst}}
+                                        </nb-option>
+                                    </nb-select>
+                                    <span class="error"
+                                        *ngIf="IntiatiorFormGroup.get('GSTValue').hasError('pattern') || (IntiatiorFormGroup.get('GSTValue')?.hasError('required') && IntiatiorFormGroup.get('GSTValue')?.touched)">
+                                        Please Enter GST value
+                                    </span>
+                                </div>
+                                <div class="col-4">
+                                    <div class="mb-3 title-second">
+                                        Vendor Name
+                                    </div>
+                                    <input type="text" placeholder="Name" nbInput fullWidth status="basic"
+                                        class="inputfield" formControlName="Name">
+                                    <span class="error"
+                                        *ngIf="IntiatiorFormGroup.get('Name').hasError('pattern') || (IntiatiorFormGroup.get('Name')?.hasError('required') && IntiatiorFormGroup.get('Name')?.touched)">
+                                        Please Enter Name
+                                    </span>
+                                </div>
+                                <div class="col-4">
+                                    <div class="mb-3 title-second">
+                                        Vendor Mail
+                                    </div>
+                                    <input type="text" placeholder="Mail" nbInput fullWidth status="basic"
+                                        class="inputfield" formControlName="Email">
+                                    <span class="error"
+                                        *ngIf="IntiatiorFormGroup.get('Email').hasError('pattern') || (IntiatiorFormGroup.get('Email')?.hasError('required') && IntiatiorFormGroup.get('Email')?.touched)">
+                                        Please Enter Mail
+                                    </span>
+                                </div>
+
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-4">
+                                    <div class="mb-3 title-second">
+                                        Mail
+                                    </div>
+                                    <input type="text" placeholder="Mail" nbInput fullWidth status="basic"
+                                        class="inputfield" formControlName="Email">
+                                    <span class="error"
+                                        *ngIf="IntiatiorFormGroup.get('Email').hasError('pattern') || (IntiatiorFormGroup.get('Email')?.hasError('required') && IntiatiorFormGroup.get('Email')?.touched)">
+                                        Please Enter Mail
+                                    </span>
+                                </div>
+                            </div> -->
+                            <!-- <div class="row">
+                            <div class="col-4">
+                                <div class="mb-3 title">
+                                    Vendor Type
+                                </div>
+                                <input type="text" placeholder="Vendor Type" nbInput fullWidth status="basic"
+                                    class="inputfield">
+                            </div>
+                        </div> -->
+                        </div>
+
+                    </div>
+
+                </nb-card-body>
+            </nb-card>
+        </form>
+    </div>
+    <div class="footercard">
+        <nb-card class="footerbutton">
+            <nb-card-body style="padding: 10px 10px 10px 10px;">
+                <div class="d-flex justify-content-end">
+                    <button class="SaveBtn" (click)="SubmitClicked()">Submit</button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <mat-progress-spinner *ngIf="IsProgressBarVisibile" class="progressBarPostion" color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+    <div id="overlay" *ngIf="IsProgressBarVisibile"></div>
+</div>

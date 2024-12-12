@@ -1,0 +1,47 @@
+<!-- <div class="dialog-content-wrapper">
+    <mat-toolbar class="toolBg m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Confirmation</span>
+            <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+                <mat-icon svgIcon="closeIcon"></mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+        <p> Are you sure you want to {{dialogData.Actiontype}} the {{dialogData.Catagory}} ?</p>
+    </mat-dialog-content>
+   
+        <input matInput style="margin-left: 40px;width: min-content;border-bottom: 1px solid grey;" placeholder="Remarks" formControlName="Remark" fxFlex (keyup.enter)="handleFileInput1($event)"  *ngIf="hiddeninput">
+       
+    <mat-dialog-actions class="m-0 p-16" fxLayoutAlign="space-between center" align="end">
+        <button mat-button type="button" class="SaveBtn"(click)="CloseClicked()">Cancel</button>
+        <button mat-button type="button" class="btnBg" (click)="YesClicked()">Yes</button>
+    </mat-dialog-actions>
+</div> -->
+<div id="confirmation-dialog" class="dialog-custom">
+    <!-- <div class="toolBg m-0"> -->
+    <div class="row" style="width: 102.8%;">
+        <div class="col toolBg d-flex justify-content-between ">
+            <span>Confirmation</span>
+            <img class="close" (click)="CloseClicked()" src="/assets/images/close-outline.svg">
+        </div>
+    </div>
+    <div class="row">
+        <div class="content">
+            <p> Are you sure you want to {{dialogData.Actiontype}} the {{dialogData.Catagory}} ?</p>
+        </div>
+        <input class="col-6 remarks" type="text" nbInput fullWidth status="basic"  placeholder="Remarks" formControlName="Remark"  (keyup.enter)="handleFileInput1($event)"  *ngIf="hiddeninput">
+        <!-- <input matInput style="margin-left: 40px;width: min-content;border-bottom: 1px solid grey;" placeholder="Remarks" formControlName="Remark" fxFlex (keyup.enter)="handleFileInput1($event)"  *ngIf="hiddeninput"> -->
+    </div>
+    <div class="row">
+        <div class="col" style="padding: 20px 10px 0px 24px;">
+            <div class="d-flex justify-content-around">
+                <button mat-button class="cancel-btn" (click)="CloseClicked()">
+                    Cancel</button>
+                <button mat-button class="btnBg" (click)="YesClicked()">
+                    Yes</button>
+            </div>
+        </div>
+    </div>
+</div>

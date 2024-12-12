@@ -1,0 +1,75 @@
+<div class="container-fluid-1">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 d-none d-md-flex justify-content-center align-items-center">
+            <img class="img" src="/assets/images/background12.svg">
+        </div>
+        <div class="row col-12 col-md-4 d-flex justify-content-md-end justify-content-center align-items-start card-content">
+           <div class="d-flex justify-content-end p-0">
+            <img  src="/assets/images/Zenex Logo.png">
+           </div>
+            <nb-card class=" col-md-8 col-sm-6 login-card">
+                <nb-card-body class="d-flex justify-content-center">
+                    <div class="w-100">
+                        <div class="login-header">LOGIN
+                            </div>
+                        <!-- <div class="d-flex justify-content-center align-items-center">
+                            <img class="cloud" src="/assets/images/BPCloudlogo.svg">
+                        </div>
+                        <div class="row justify-content-center pb-3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <span class="welcomespan">Welcome to BP Cloud</span>
+                            </div>
+                        </div> -->
+                        <div class="pt-3 login-details-css">
+                            <form [formGroup]="loginForm">
+                                <div>
+                                    <p class="labels">Name</p>
+                                    <input type="text" nbInput fullWidth status="basic" class="inputfield"
+                                        placeholder="Enter Username" formControlName="userName">
+                                    <span class="error"
+                                        *ngIf="loginForm.get('userName')?.hasError('required') && loginForm.get('userName')?.touched">
+                                        UserName is required
+                                    </span>
+                                </div>
+                                <div class="pt-3">
+                                    <p class="labels">Password</p>
+                                    <nb-form-field>
+                                        <input [type]="hide ? 'password' : 'text'" nbInput fullWidth status="basic"
+                                            class="inputfield" placeholder="Enter Password" formControlName="password">
+                                        <nb-icon nbSuffix [icon]="hide ? 'eye-off-outline' : 'eye-outline'"
+                                            (click)="togglePasswordVisibility()"></nb-icon>
+                                    </nb-form-field>
+                                    <span class="error"
+                                        *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+                                        Password is required
+                                    </span>
+                                </div>
+                                <div class="row btn-margin">
+                                    <div class="d-flex  justify-content-between">
+                                       
+                                        <button (click)="LoginClicked()">Login</button>
+                                        <span class="forgot ps-2" (click)="OpenForgetPasswordLinkDialog()">Forgot Password ?</span>
+                                    </div>
+                                    <!-- <div class="d-flex  justify-content-center p-2 btn-margin">
+                                       
+                                    </div> -->
+                                </div>
+                             
+
+                            </form>
+                        </div>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col-md-6 d-none d-md-block">
+
+        </div>
+    </div>
+    <mat-progress-spinner *ngIf="IsProgressBarVisibile" class="progressBarPostion" color="accent" mode="indeterminate">
+    </mat-progress-spinner>
+    <div id="overlay" *ngIf="IsProgressBarVisibile"></div>
+    <footer>
+        <img src="/assets/images/footerimage.png" >
+    </footer>
+</div>

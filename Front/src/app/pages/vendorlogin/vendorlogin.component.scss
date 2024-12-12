@@ -1,0 +1,292 @@
+::ng-deep .container-fluid
+{
+    background-image: url('/assets/images/Group8579.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+::ng-deep .container-fluid-1
+{
+    background-image: url('/assets/images/b1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+   overflow: hidden;
+}
+.btn-margin{
+    margin-top: 20px;
+}
+.card-content
+{
+    height: 100vh;
+    padding: 0px;
+    max-width: 40%;
+}
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    display: block;
+    width: 160%;
+    height: 30vh;
+  }
+p{
+    font-family: Arial;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.title
+{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Arial Black' !important;
+    line-height: 1;
+    color: #1f009e;
+}
+.img
+{
+    width: 60%;
+}
+.welcomespan
+{
+    font-size: 18px;
+    color: #394657;
+    font-weight: 600;
+    padding-top: 15px;
+}
+
+.subtitle
+{
+    font-size: 10px;
+    font-weight: 800px;
+    color: #acacac;
+}
+.cloud{
+    width: 30%;
+}
+nb-card
+{
+    border-radius: 14px;
+    height: 63.5%;
+    position: relative;
+    top: 14px;
+    box-shadow: 0 2px 37px 0px rgba(0, 0, 0, 0.10), 0 2px 2px 0 rgba(0, 0, 0, 0.01), 0 2px 5px 0 rgba(0, 0, 0, 0.03);
+}
+.inputfield{
+    background-color: white;
+    border-color: #dee2e6;
+}
+.labels{
+    color: #677a8e;
+    font-size: 14px;
+}
+button
+{
+    background-color:#035f88;
+    color: white;
+    padding: 8px;
+    width: 60%;
+    border: 0px;
+    border-radius: 5px;
+    font-family: Arial Black;
+}
+
+.forgot
+{
+    color: #035f88;
+    font-size: 10px;
+    font-family: 'Arial' !important;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.fotersign
+{
+    font-size: 10px ;
+    padding-top: 2px;
+    padding-left: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #0e82f8;
+}
+
+.logo
+{
+    height: 20px;
+}
+
+.powererdby
+{
+    font-size: 10px;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.error
+{
+    color: red;
+    font-size: 10px;
+}
+
+
+::ng-deep .container-fluid
+{
+  background-image: url('/assets/images/Group8579.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+::ng-deep .container-fluid-1
+{
+  // background-image: url('/assets/images/b1.png');
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  padding: 0px;
+}
+nb-layout .layout .layout-container .content .columns nb-layout-column {
+  padding: 0px !important;
+}
+.btn-margin{
+  margin-top: 20px;
+}
+.login-card{
+  margin-right: 18px;
+}
+.card-content
+{
+  height: 100vh;
+  padding: 20px 20px 100px 0px;
+  max-width: 40%;
+}
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  display: block;
+  width: 160%;
+  height: 30vh;
+}
+p{
+  font-family: Arial;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.title
+{
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Arial Black' !important;
+  line-height: 1;
+  color: #1f009e;
+}
+.content-padding{
+  padding: 0px;
+}
+.img
+{
+  width: 90%;
+  position: relative;
+  /* margin-bottom: 12px; */
+  bottom: 40px;
+}
+nb-card-body{
+  padding: 0px !important;
+}
+nb-card{
+  padding: 0px !important;
+}
+.welcomespan
+{
+  font-size: 18px;
+  color: #394657;
+  font-weight: 600;
+  padding-top: 15px;
+}
+.login-header{
+  width: 100%;
+  height: 50px;
+  background-color: #064e9c;
+  color: white;
+  padding: 14px 10px 12px 13px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+}
+.login-details-css{
+  padding: 0px 15px 15px 15px;
+}
+.subtitle
+{
+  font-size: 10px;
+  font-weight: 800px;
+  color: #acacac;
+}
+.cloud{
+  width: 30%;
+}
+nb-card
+{
+  border-radius: 14px;
+  // height: 0px;
+  // position: relative;
+  // top: 14px;
+  box-shadow: 0 2px 37px 0px rgba(0, 0, 0, 0.10), 0 2px 2px 0 rgba(0, 0, 0, 0.01), 0 2px 5px 0 rgba(0, 0, 0, 0.03);
+}
+.inputfield{
+  background-color: white;
+  border-color: #dee2e6;
+}
+.labels{
+  color: #677a8e;
+  font-size: 14px;
+}
+button
+{
+  background-color: #064e9c;
+  color: white;
+  padding: 7px;
+  width: 21%;
+  border: 0px;
+  border-radius: 5px;
+  font-family: sans-serif;
+}
+
+.forgot
+{
+  color: #035f88;
+  font-size: 10px;
+  font-family: 'Arial' !important;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.fotersign
+{
+  font-size: 10px ;
+  padding-top: 2px;
+  padding-left: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #0e82f8;
+}
+
+.logo
+{
+  height: 20px;
+}
+
+.powererdby
+{
+  font-size: 10px;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.error
+{
+  color: red;
+  font-size: 10px;
+}

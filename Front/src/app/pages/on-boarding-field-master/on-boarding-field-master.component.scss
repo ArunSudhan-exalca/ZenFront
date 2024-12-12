@@ -1,0 +1,117 @@
+#OBDField {
+    width: 100%;
+    background-color: rgb(245 245 245);
+    padding: 20px 20px 20px 20px !important;
+    height: 85vh;
+    overflow: hidden;
+    .progressBarPostion {
+        position: absolute !important;
+        bottom: 50%;
+        z-index: 1;
+        left: 55%;
+      }
+    
+    .title {
+        font-size: 15px;
+        font-weight: 600;
+        padding: 16px 18px 0px 16px;
+        color: #455261;
+    }
+
+    .leftCard {
+        // @include mat-elevation(2);
+        background: white;
+        border-left: 5px solid #035f88;
+        // margin-left: 20px;
+        cursor: pointer !important;
+    }
+
+    .side-bar {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        .sidenav-content {
+            max-height: 75vh;
+            overflow: hidden;
+        }
+
+        // .left_scroll{
+        //     max-height: 100vh;
+        //     overflow: hidden;
+        // }
+    }
+
+    .side-bar {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        .sidenav-content {
+            overflow: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    .side-bar-items {
+        text-decoration: none !important;
+        display: flex;
+        align-items: center;
+        height: 50px;
+        padding: 0 24px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 0 25px 25px 0;
+        margin-right: 7px;
+    }
+
+    .strong_label {
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    .labels {
+        font-size: 13px;
+    }
+
+    .footerCard {
+        position: fixed;
+        height: 80px;
+        // box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.16);
+        background-color: #e8ebfa;
+        bottom: 0px;
+        // left: 0px;
+        // right: 0px;
+        margin-bottom: 0px;
+        z-index: 100;
+        width: 83.5%;
+        margin-left: -9px;
+        right: -2px;
+    }
+
+    .footerbutton {
+        margin-top: 12px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 11px;
+    }
+
+    .SaveBtn {
+
+        background-color: #035f88;
+        border-color: #035f88;
+        border-radius: 7px;
+        width: 10%;
+        height: 5vh;
+        font-size: 13px;
+        color: white;
+        position: relative;
+border: 1px solid;
+    }
+
+    .fieldwidth2 {
+        width: 74%;
+    }
+}
