@@ -111,7 +111,7 @@ export class VendorDashboardComponent implements OnInit {
             //             this.GetAllRejectedVendorOnBoardingsCount();
             //         }
             //     });
-            this.GetAllApprovedVendorOnBoardings();
+            //this.GetAllApprovedVendorOnBoardings();
             this.GetAllPendingVendorOnBoarding();
             this.GetAllOpenVendorOnBoardings();
             // this.GetAllApprovedVendorOnBoardingsCount();
@@ -139,7 +139,7 @@ export class VendorDashboardComponent implements OnInit {
         this.tab1 = false;
         this.tab2 = true;
         this.tab3 = false;
-        this.GetAllApprovedVendorOnBoardings();
+        //this.GetAllApprovedVendorOnBoardings();
         this.tabCount = 2;
     }
 
@@ -183,6 +183,7 @@ export class VendorDashboardComponent implements OnInit {
                 .GetAllPendingVendorOnBoardingsByApprover(this.currentUserName)
                 .subscribe(
                     (data) => {
+                        console.log(data);
                         this.IsProgressBarVisibile = false;
                         this.AllVendorOnBoardings = <BPVendorOnBoarding[]>data;
                         if (
